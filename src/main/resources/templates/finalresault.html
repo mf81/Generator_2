@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator Kont Bankowych 2</title>
+</head>
+<body>
+<h4 class="center">Konto eksploatacji:</h4>
+<h1 class="center" th:each="skladowe:${finalBankAcount}" th:text="${skladowe.checkSum +' '
+                                                      +skladowe.bankNumber +' '
+                                                      +skladowe.swrk +' '
+                                                      +skladowe.numberEF
+                                                      +skladowe.admNumber +' '
+                                                      +skladowe.WMname +' '
+                                                      +skladowe.clientName
+
+                                                            }"></h1>
+
+
+<h4 class="center">Konto funduszu remontowego:</h4>
+<h1 class="center" th:each="skladowe:${finalBankAcount}" th:text="${skladowe.checkSum +' '
+                                                      +skladowe.bankNumber +' '
+                                                      +skladowe.swrk +' '
+                                                      +skladowe.numberEF
+                                                      +skladowe.admNumber +' '
+                                                      +skladowe.WMname +' '
+                                                      +skladowe.clientName
+
+                                                            }"></h1>
+
+
+</body>
+</html>

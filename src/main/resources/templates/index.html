@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator Kont Bankowych 2</title>
+</head>
+<body>
+<h1>Here will be Bank Account Generator </h1>
+<p>It's comming soon...</p>
+
+<form action="/generate" th:object="${FinalBankAcount}" method="post">
+
+    <select name="bankNumber" id="bankNumber">
+        <option th:each="bank:${bankDropListCollection}" th:value="${bank.bankNumber}" th:text="${bank.name}"></option>
+    </select>
+
+    <input type="submit" value="Wybierz..."/>
+</form>
+
+<ul>
+    <li th:each="bank:${bankDropListCollection}" th:text="${'Bank: ' + bank.name  + '-' + bank.bankNumber}"></li>
+</ul>
+
+<br/>
+</body>
+</html>

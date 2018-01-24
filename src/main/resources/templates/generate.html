@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator Kont Bankowych 2</title>
+    <style>
+    td,th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${name}"></h1>
+<h4 th:text="${bankNumber}"></h4>
+
+
+<form action="/finalresault" th:object="${FinalBankAcount}" method="post">
+    <table>
+        <tr>
+            <th>Bank</th>
+            <th>Numer banku</th>
+            <th>SWRK Banku</th>
+            <th>Typ konta (E/F)</th>
+            <th>ADM</th>
+            <th>Nr Wspólnoty</th>
+            <th>Nr Kontrahenta</th>
+        </tr>
+        <tr style='text-align:center; vertical-align:middle; border: 1px;'>
+            <td th:text="${finalBankAcount.name}"></td>
+            <td th:text="${finalBankAcount.bankNumber}"></td>
+            <td>
+
+                <select name="swrk" id="swrk">
+                    <option th:each="swrk:${swrkDropListCollection}" th:value="${swrk.key}" th:text="${swrk.value}"></option>
+                </select>
+            </td>
+            <td>
+                <select name="numberEF" id="numberEF">
+                    <option th:each="typ:${acountDropListCollection}" th:value="${typ.key}" th:text="${typ.value}"></option>
+                </select>
+            </td>
+            <td>
+                <select name="admNumber" id="admNumber">
+                    <option th:each="adm:${admDropListCollection}" th:value="${adm.key}" th:text="${adm.value}"></option>
+                </select>
+            </td>
+            <td><input name="WMname"></td>
+            <td><input name="clientName"></td>
+        </tr>
+
+
+    </table>
+    <input type="hidden" name="bankNumber" th:value="${finalBankAcount.bankNumber}"></input>
+    <input type="submit" value="Generuj..."/>
+</form>
+
+
+
+</body>
+</html>
