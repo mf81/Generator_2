@@ -102,6 +102,7 @@ public class FinalBankAcount {
         wynik = nrKonta.mod(modulo);
         wynik=liczba.subtract(wynik);
         String y = ""+wynik;
+        if (y.length()==1)y="0" + y;
         return y;
     }
 }
