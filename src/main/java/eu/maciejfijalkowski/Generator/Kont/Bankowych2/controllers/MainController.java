@@ -35,7 +35,7 @@ public class MainController {
     }
 
     @PostMapping("/generate")
-    public String generate(@ModelAttribute @Valid FinalBankAcount finalBankAcount, BindingResult bindingResult, ModelMap modelMap){
+    public String generate(@ModelAttribute FinalBankAcount finalBankAcount, ModelMap modelMap){
 
         modelMap.addAttribute("admDropListCollection", CsvReader.CsvReader("src/main/resources/adm.csv").entrySet());
         modelMap.addAttribute("acountDropListCollection",CsvReader.CsvReader("src/main/resources/type.csv").entrySet());
