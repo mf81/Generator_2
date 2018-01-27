@@ -49,10 +49,10 @@
 
 
             </td>
-            <td><input name="WMname">
+            <td><input name="WMname" th:value="${finalBankAcount.WMname}">
                 <span th:if="${#fields.hasErrors('WMname')}" th:errors="*{WMname}"></span>
             </td>
-            <td><input name="clientName">
+            <td><input name="clientName" th:value="${finalBankAcount.clientName}">
             <span th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"></span></td>
         </tr>
 

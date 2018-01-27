@@ -26,8 +26,6 @@ public class MainController {
         finalBankAcount = new FinalBankAcount();
         modelMap.addAttribute("finalBankAcount",finalBankAcount);
         modelMap.addAttribute("bankDropListCollection",bankDropListCollection.getBankList());
-
-        System.out.println("1"+finalBankAcount);
         return "index";
     }
 
@@ -39,14 +37,9 @@ public class MainController {
     @PostMapping("/generate")
     public String generate(@ModelAttribute @Valid FinalBankAcount finalBankAcount, BindingResult bindingResult, ModelMap modelMap){
 
-//        modelMap.addAttribute("info", "Poprawnie dodałeś/aś nowe ostrzeżenie!");
-
-
-        //modelMap.addAttribute("admDropListCollection",admDropListCollection.getAdmy());
         modelMap.addAttribute("admDropListCollection", CsvReader.CsvReader("src/main/resources/adm.csv").entrySet());
         modelMap.addAttribute("acountDropListCollection",CsvReader.CsvReader("src/main/resources/type.csv").entrySet());
-
-        System.out.println("Bank:"+finalBankAcount.getBankNumber());
+        
         if (finalBankAcount.getBankNumber().equals("1320 0022"))
             modelMap.addAttribute("swrkDropListCollection",CsvReader.CsvReader("src/main/resources/swrkPocztowy.csv").entrySet());
         else
@@ -55,9 +48,6 @@ public class MainController {
             else
                 modelMap.addAttribute("swrkDropListCollection",CsvReader.CsvReader("src/main/resources/swrkNord.csv").entrySet());
 
-//        modelMap.addAttribute("finalBankAcount",finalBankAcount);
-        System.out.println("Obiekt " + finalBankAcount.getName()+finalBankAcount.getBankNumber());
-        System.out.println(finalBankAcount);
         return "generate";
     }
 
