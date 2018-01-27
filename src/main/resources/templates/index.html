@@ -8,7 +8,7 @@
 <h1>Here will be Bank Account Generator </h1>
 <p>It's comming soon...</p>
 
-<form action="/generate" th:object="${FinalBankAcount}" method="post">
+<form action="/generate" th:object="${finalBankAcount}" method="post">
 
     <select name="bankNumber" id="bankNumber">
         <option th:each="bank:${bankDropListCollection}" th:value="${bank.bankNumber}" th:text="${bank.name}"></option>

@@ -12,11 +12,11 @@
 </head>
 <body>
 
-<h1 th:text="${name}"></h1>
-<h4 th:text="${bankNumber}"></h4>
+<h1 th:text="${finalBankAcount.name}"></h1>
+<h4 th:text="${finalBankAcount.bankNumber}"></h4>
 
 
-<form action="/finalresault" th:object="${FinalBankAcount}" method="post">
+<form action="/finalresault" th:object="${finalBankAcount}" method="post">
     <table>
         <tr>
             <th>Bank</th>
@@ -40,14 +40,20 @@
                 <select name="numberEF" id="numberEF">
                     <option th:each="typ:${acountDropListCollection}" th:value="${typ.key}" th:text="${typ.value}"></option>
                 </select>
+
             </td>
             <td>
                 <select name="admNumber" id="admNumber">
                     <option th:each="adm:${admDropListCollection}" th:value="${adm.key}" th:text="${adm.value}"></option>
                 </select>
+
+
             </td>
-            <td><input name="WMname"></td>
-            <td><input name="clientName"></td>
+            <td><input name="WMname">
+                <span th:if="${#fields.hasErrors('WMname')}" th:errors="*{WMname}"></span>
+            </td>
+            <td><input name="clientName">
+            <span th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"></span></td>
         </tr>
 
 
