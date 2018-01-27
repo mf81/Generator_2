@@ -29,9 +29,12 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping
-    public String generate(ModelMap modelMap){
-        return "generate";
+    @GetMapping("/generate")
+    public String indexGenerate (ModelMap modelMap, BankDropListCollection bankDropListCollection){
+        finalBankAcount = new FinalBankAcount();
+        modelMap.addAttribute("finalBankAcount",finalBankAcount);
+        modelMap.addAttribute("bankDropListCollection",bankDropListCollection.getBankList());
+        return "index";
     }
 
     @PostMapping("/generate")
@@ -39,7 +42,7 @@ public class MainController {
 
         modelMap.addAttribute("admDropListCollection", CsvReader.CsvReader("src/main/resources/adm.csv").entrySet());
         modelMap.addAttribute("acountDropListCollection",CsvReader.CsvReader("src/main/resources/type.csv").entrySet());
-        
+
         if (finalBankAcount.getBankNumber().equals("1320 0022"))
             modelMap.addAttribute("swrkDropListCollection",CsvReader.CsvReader("src/main/resources/swrkPocztowy.csv").entrySet());
         else
@@ -49,6 +52,14 @@ public class MainController {
                 modelMap.addAttribute("swrkDropListCollection",CsvReader.CsvReader("src/main/resources/swrkNord.csv").entrySet());
 
         return "generate";
+    }
+
+    @GetMapping("/finalresault")
+    public String indexFinalResault (ModelMap modelMap, BankDropListCollection bankDropListCollection){
+        finalBankAcount = new FinalBankAcount();
+        modelMap.addAttribute("finalBankAcount",finalBankAcount);
+        modelMap.addAttribute("bankDropListCollection",bankDropListCollection.getBankList());
+        return "index";
     }
 
     @PostMapping("/finalresault")
