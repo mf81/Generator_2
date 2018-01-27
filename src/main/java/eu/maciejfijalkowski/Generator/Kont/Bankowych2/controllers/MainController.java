@@ -30,11 +30,8 @@ public class MainController {
     }
 
     @GetMapping("/generate")
-    public String indexGenerate (ModelMap modelMap, BankDropListCollection bankDropListCollection){
-        finalBankAcount = new FinalBankAcount();
-        modelMap.addAttribute("finalBankAcount",finalBankAcount);
-        modelMap.addAttribute("bankDropListCollection",bankDropListCollection.getBankList());
-        return "index";
+    public String indexGenerate(){
+        return "redirect:/";
     }
 
     @PostMapping("/generate")
@@ -55,11 +52,8 @@ public class MainController {
     }
 
     @GetMapping("/finalresault")
-    public String indexFinalResault (ModelMap modelMap, BankDropListCollection bankDropListCollection){
-        finalBankAcount = new FinalBankAcount();
-        modelMap.addAttribute("finalBankAcount",finalBankAcount);
-        modelMap.addAttribute("bankDropListCollection",bankDropListCollection.getBankList());
-        return "index";
+    public String indexFinalResault(){
+        return "redirect:/";
     }
 
     @PostMapping("/finalresault")
@@ -80,7 +74,6 @@ public class MainController {
         }
         modelMap.addAttribute("finalBankAcount",finalBankAcount);
         finalBankAcount.setNRB();
-        System.out.println("Obiekt " + finalBankAcount.getName());
         return "finalresault";
     }
 
