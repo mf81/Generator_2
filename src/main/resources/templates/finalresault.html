@@ -6,13 +6,17 @@
 </head>
 <body>
 <h4 class="center">Wygenerowane konto:</h4>
-<h1 class="center" th:each="skladowe:${finalBankAcount}" th:text="${skladowe.checkSum +' '
-                                                      +skladowe.bankNumber +' '
-                                                      +skladowe.swrk +' '
-                                                      +skladowe.numberEF
-                                                      +skladowe.admNumber +' '
-                                                      +skladowe.WMname +' '
-                                                      +skladowe.clientName
-                                                            }"></h1>
+
+<h5 th:if="${finalBankAcount.numberEF} == 001" th:text="Eksploatacja"></h5>
+<h5 th:if="${finalBankAcount.numberEF} == 002" th:text="Fundusz + ' ' +remontowy"></h5>
+
+<h1 class="center" th:text="${finalBankAcount.checkSum +' '
+                              +finalBankAcount.bankNumber +' '
+                              +finalBankAcount.swrk +' '
+                              +finalBankAcount.numberEF
+                              +finalBankAcount.admNumber +' '
+                              +finalBankAcount.WMname +' '
+                              +finalBankAcount.clientName
+                               }"></h1>
 </body>
 </html>
